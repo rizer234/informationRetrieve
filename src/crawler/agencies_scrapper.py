@@ -4,7 +4,7 @@ from selenium import webdriver
 import time
 
 
-def parse_page(response):
+def parse_page_for_news_links(response):
     domain = response.url[:response.url.find(response.request.path_url)]
     soup = BeautifulSoup(response.content, "html.parser")
     
@@ -25,7 +25,7 @@ def parse_page(response):
     return links
         
 
-def parse_isna_pages_using_selenium(url: str):
+def parse_isna_pages_using_selenium_for_news_links(url: str):
     driver = webdriver.Firefox()
     driver.get(url)
     time.sleep(10)
