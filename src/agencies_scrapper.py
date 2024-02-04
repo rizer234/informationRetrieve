@@ -1,6 +1,10 @@
+import os
 from bs4 import BeautifulSoup
+from selenium import webdriver
+import time
 
-def ham_irna_mehr_get_news_links(response: str):
+
+def parse_page(response):
     domain = response.url[:response.url.find(response.request.path_url)]
     soup = BeautifulSoup(response.content, "html.parser")
     
@@ -21,16 +25,24 @@ def ham_irna_mehr_get_news_links(response: str):
     return links
         
 
-def isna_get_news_links(html_text: str):
-    soup = BeautifulSoup(html_text, "html.parser")
-    news_tags = soup.find_all("li", class_="text")
-    news_tags += soup.find_all("li", class_="coverage")
+def parse_isna_pages_using_selenium(url: str):
+    driver = webdriver.Firefox()
+    driver.get(url)
+    time.sleep(10)
+    page_html = driver.page_source
+    driver.close()
+    soup = BeautifulSoup(page_html, "html.parser")
+    news_tags = soup.find_all("li", class_="news")
     links = []
     for tag in news_tags:
+        # all of href links that direct to single news in a class tags
         a_tags = tag.find_all("a")
-    for a_tag in a_tags:
-        if a_tag.get("href", False):
-                links.append(a_tag["href"])
+        for a_tag in a_tags:
+            if a_tag.get("href", False):
+                links.append("https://www.isna.ir/" + a_tag["href"])
                 break
     return links
+
+
+
 
