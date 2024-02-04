@@ -44,5 +44,3 @@ def parse_isna_pages_using_selenium_for_news_links(url: str):
     return links
 
 
-
-
