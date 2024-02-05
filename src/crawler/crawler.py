@@ -12,7 +12,9 @@ def get_news_links(url: str):
     links = []
     for i in range(1, 10):
         pagination_cursor = url.find("&pi=")
-        url[pagination_cursor + 4] = i
+        url_list = list(url)
+        url_list[pagination_cursor + 4] = str(i)
+        url = ''.join(url_list)
         try:
             response = client.get(url)
         except:

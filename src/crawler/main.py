@@ -1,6 +1,6 @@
 import requests
-from crawler.crawler import get_mehr_news, get_news_links
-from crawler.save_in_excel import add_data_to_excel
+from crawler import get_mehr_news, get_news_links
+from save_in_excel import add_data_to_excel
 import links
 
 
@@ -38,3 +38,4 @@ def run(agency: str):
     get_and_save_news("economy", economy_links)
     get_and_save_news("art", art_links)
     
+run("mehr")
