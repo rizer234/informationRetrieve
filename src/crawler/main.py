@@ -1,4 +1,4 @@
-import requests
+import concurrent.futures as con
 from crawler import get_mehr_news, get_news_links
 from save_in_excel import add_data_to_excel
 import links
@@ -33,9 +33,11 @@ def run(agency: str):
         economy_links = get_news_links(links.mehr_links["economy"])
         art_links = get_news_links(links.mehr_links["art"])
     
-    get_and_save_news("sport", sport_links)
-    get_and_save_news("political", political_links)
-    get_and_save_news("economy", economy_links)
-    get_and_save_news("art", art_links)
+    with con.ThreadPoolExecutor(max_workers=4) as executor:
+        executor.submit(get_and_save_news, "sport", sport_links)
+        executor.submit(get_and_save_news, "political", political_links)
+        executor.submit(get_and_save_news, "economy", economy_links)
+        executor.submit(get_and_save_news, "art", art_links)
+    
     
 run("mehr")
