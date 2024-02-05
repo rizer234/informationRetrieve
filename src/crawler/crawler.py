@@ -10,7 +10,7 @@ class Crawler:
 
 def get_news_links(url: str):
     links = []
-    for i in range(1, 10):
+    for i in range(1, 15):
         pagination_cursor = url.find("&pi=")
         url_list = list(url)
         url_list[pagination_cursor + 4] = str(i)
