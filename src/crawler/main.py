@@ -33,5 +33,8 @@ def run(agency: str):
         economy_links = get_news_links(links.mehr_links["economy"])
         art_links = get_news_links(links.mehr_links["art"])
     
-    
+    get_and_save_news("sport", sport_links)
+    get_and_save_news("political", political_links)
+    get_and_save_news("economy", economy_links)
+    get_and_save_news("art", art_links)
     
