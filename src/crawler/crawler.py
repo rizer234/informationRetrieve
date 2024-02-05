@@ -8,7 +8,8 @@ class Crawler:
     def __init__(self) -> None:
         pass
 
-def get_news_links(topic_links_list: list, url: str):
+def get_news_links(url: str):
+    links = []
     for i in range(1, 10):
         pagination_cursor = url.find("&pi=")
         url[pagination_cursor + 4] = i
@@ -16,7 +17,8 @@ def get_news_links(topic_links_list: list, url: str):
             response = client.get(url)
         except:
             continue
-        topic_links_list += parse_page_for_news_links(response)
+        links += parse_page_for_news_links(response)
+    return links
 
 
 def get_mehr_news(url: str):
