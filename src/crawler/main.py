@@ -67,5 +67,6 @@ def run(agency: str):
         art_links = hamshahri_scrapper.get_hamshahri_news_links(links.hamshahri_links["art"])
         get_and_save("art", art_links, hamshahri_scrapper.get_hamshahri_news)
     
-    
-run("irna")
+
+indented_agency_for_crawl = input("What news_agency you want to crawl? ")
+run(indented_agency_for_crawl)
