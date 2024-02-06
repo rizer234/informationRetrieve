@@ -15,7 +15,7 @@ isna_links = {
 
 irna_links = {
     "sport": "https://www.irna.ir/archive?pi=1&tp=14&ms=0&dy=14&mn=11&yr=1402",
-    "political": "https://www.irna.ir/archive?tp=5",
+    "political": "https://www.irna.ir/page/archive.xhtml?mn=11&wide=0&dy=17&ms=0&pi=1&yr=1402&tp=5",
     "economy": "https://www.irna.ir/archive?pi=1&tp=20&ms=0&dy=14&mn=11&yr=1402",
     "art": "https://www.irna.ir/archive?pi=1&tp=41&ms=0&dy=14&mn=11&yr=1402"
 }
