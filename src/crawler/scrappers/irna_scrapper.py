@@ -11,7 +11,7 @@ driver = webdriver.Firefox()
 
 def get_irna_news_links(url: str):
     links = []
-    for i in range(1, 4):
+    for i in range(1, 5):
         pagination_cursor = url.find("pi=")
         url_list = list(url)
         url_list[pagination_cursor + 3] = str(i)
@@ -46,6 +46,6 @@ def get_irna_news(subject: str, url: str) -> News:
     text_tag = body_tag.find("div", class_="item-text")
     text = text_tag.get_text()
     news = News(subject, title, text, url)
-    return text
+    return news
 
 

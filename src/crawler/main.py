@@ -68,4 +68,4 @@ def run(agency: str):
         get_and_save("art", art_links, hamshahri_scrapper.get_hamshahri_news)
     
     
-run("hamshahri")
+run("irna")
